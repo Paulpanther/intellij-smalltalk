@@ -48,6 +48,8 @@ qodana {
     showReport.set(System.getenv("QODANA_SHOW_REPORT")?.toBoolean() ?: false)
 }
 
+sourceSets["main"].java.srcDirs("src/main/gen")
+
 tasks {
     // Set the JVM compatibility versions
     properties("javaVersion").let {

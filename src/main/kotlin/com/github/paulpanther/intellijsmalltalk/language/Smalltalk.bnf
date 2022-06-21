@@ -1,0 +1,56 @@
+{
+  parserClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkParser"
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Smalltalk"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.github.paulpanther.intellijsmalltalk.language.psi"
+  psiImplPackage="com.github.paulpanther.intellijsmalltalk.language.psi.impl"
+
+  elementTypeHolderClass="com.github.paulpanther.intellijsmalltalk.language.psi.SmalltalkTypes"
+  elementTypeClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkElementType"
+  tokenTypeClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkTokenType"
+}
+
+file ::= method
+
+string ::= STRING_START STRING_CONTENT? STRING_END
+
+parenthesized_expression ::= PARENTHESIS_START expression PARENTHESIS_END
+
+statement ::= expression | return | COMMENT
+
+expression ::= assignment | unary_message | binary_message | keyword_message | primary
+
+assignment ::= IDENTIFIER ASSIGNMENT_OPERATOR expression
+
+multi_statement ::= statement (STATEMENT_SEPERATOR statement)*
+
+return ::= RETURN_OPERATOR expression
+
+method ::= selector temporaries? multi_statement? STATEMENT_SEPERATOR?
+
+selector ::= unary_selector | keyword_selector
+
+unary_selector ::= IDENTIFIER
+keyword_selector ::= (KEYWORD IDENTIFIER)+
+
+temporaries ::= BLOCK_ARGUMENT_SEPERATOR IDENTIFIER+ BLOCK_ARGUMENT_SEPERATOR
+
+unary_message ::= expression IDENTIFIER
+binary_message ::= expression BINARY_OPERATOR expression
+keyword_message ::= expression (KEYWORD expression)+
+
+primary ::= IDENTIFIER
+    | parenthesized_expression
+    | NUMBER
+    | string
+    | block
+    | NIL
+    | TRUE
+    | FALSE
+    | THIS_CONTEXT
+    | SELF
+    | SUPER
+
+block ::= BLOCK_START (BLOCK_ARGUMENT BLOCK_ARGUMENT_SEPERATOR)* multi_statement? STATEMENT_SEPERATOR? BLOCK_END

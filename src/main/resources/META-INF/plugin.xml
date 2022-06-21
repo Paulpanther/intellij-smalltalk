@@ -1,18 +1,26 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.paulpanther.intellijsmalltalk</id>
-    <name>intellij-smalltalk</name>
+    <name>Smalltalk</name>
     <vendor>paulpanther</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.paulpanther.intellijsmalltalk.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.paulpanther.intellijsmalltalk.services.MyProjectService"/>
+        <fileType
+                name="Smalltalk File"
+                implementationClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkFileType"
+                language="Smalltalk"
+                extensions="st"/>
+        <lang.parserDefinition
+            language="Smalltalk"
+            implementationClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkParserDefinition" />
+        <lang.syntaxHighlighterFactory
+            language="Smalltalk"
+            implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkSyntaxHighlighterFactory" />
+
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.paulpanther.intellijsmalltalk.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
 </idea-plugin>
