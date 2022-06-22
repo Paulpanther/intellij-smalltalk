@@ -33,7 +33,7 @@
   ]
 }
 
-file ::= method
+file ::= multi_statement
 
 multi_statement ::= statement (STATEMENT_SEPERATOR statement)*
 

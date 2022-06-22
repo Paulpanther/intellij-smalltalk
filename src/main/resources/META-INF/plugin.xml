@@ -18,7 +18,8 @@
         <lang.syntaxHighlighterFactory
             language="Smalltalk"
             implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkSyntaxHighlighterFactory" />
-
+        <configurationType
+                implementation="com.github.paulpanther.intellijsmalltalk.editor.run.SmalltalkRunConfigurationType" />
     </extensions>
 
     <applicationListeners>
