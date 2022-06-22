@@ -2,4 +2,4 @@ package com.github.paulpanther.intellijsmalltalk.language
 
 import com.intellij.lexer.FlexAdapter
 
-class SmalltalkLexerAdapter: FlexAdapter(SmalltalkLexer(null))
+class SmalltalkLexerAdapter: FlexAdapter(_SmalltalkLexer())

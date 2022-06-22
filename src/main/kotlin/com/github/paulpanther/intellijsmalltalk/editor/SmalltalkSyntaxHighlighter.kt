@@ -16,11 +16,10 @@ class SmalltalkSyntaxHighlighter: SyntaxHighlighterBase() {
             addKey(SmalltalkTypes.ASSIGNMENT_OPERATOR, OPERATION_SIGN)
             addKey(SmalltalkTypes.BLOCK_START, BRACES)
             addKey(SmalltalkTypes.BLOCK_END, BRACES)
-            addKey(SmalltalkTypes.BLOCK_ARGUMENT_SEPERATOR, OPERATION_SIGN)
+            addKey(SmalltalkTypes.BLOCK_VARIABLE_SEPERATOR, OPERATION_SIGN)
             addKey(SmalltalkTypes.COMMENT, LINE_COMMENT)
             addKey(SmalltalkTypes.TRUE, KEYWORD)
             addKey(SmalltalkTypes.FALSE, KEYWORD)
-            addKey(SmalltalkTypes.THIS_CONTEXT, KEYWORD)
             addKey(SmalltalkTypes.SELF, KEYWORD)
             addKey(SmalltalkTypes.SUPER, KEYWORD)
             addKey(SmalltalkTypes.NIL, KEYWORD)
@@ -28,13 +27,12 @@ class SmalltalkSyntaxHighlighter: SyntaxHighlighterBase() {
             addKey(SmalltalkTypes.PARENTHESIS_START, PARENTHESES)
             addKey(SmalltalkTypes.PARENTHESIS_END, PARENTHESES)
             addKey(SmalltalkTypes.RETURN_OPERATOR, SEMICOLON)
-            addKey(SmalltalkTypes.STRING_CONTENT, STRING)
-            addKey(SmalltalkTypes.STRING_START, STRING)
-            addKey(SmalltalkTypes.STRING_END, STRING)
+            addKey(SmalltalkTypes.STRING, STRING)
             addKey(SmalltalkTypes.NUMBER, NUMBER)
             addKey(SmalltalkTypes.STATEMENT_SEPERATOR, SEMICOLON)
             addKey(SmalltalkTypes.KEYWORD, FUNCTION_DECLARATION)
             addKey(SmalltalkTypes.BINARY_OPERATOR, OPERATION_SIGN)
+            addKey(SmalltalkTypes.BLOCK_ARGUMENT, INSTANCE_FIELD)
         }
 
         private fun addKey(type: IElementType, other: TextAttributesKey) {
