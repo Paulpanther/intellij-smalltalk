@@ -19,13 +19,9 @@ class SmalltalkRunConfiguration(
         return super.getOptions() as SmalltalkRunConfigurationOptions
     }
 
-    var scriptName: String?
-        get() = options.scriptName
-        set(value) { options.scriptName = value }
-
-    var imageName: String?
-        get() = options.imageName
-        set(value) { options.imageName = value }
+    var squeakPath by options::squeakPath
+    var scriptPath by options::scriptPath
+    var imagePath by options::imagePath
 
     override fun getConfigurationEditor(): SettingsEditor<out RunConfiguration> {
         return SmalltalkSettingsEditor()
@@ -37,7 +33,7 @@ class SmalltalkRunConfiguration(
     override fun getState(executor: Executor, environment: ExecutionEnvironment): RunProfileState? {
         return object: CommandLineState(environment) {
             override fun startProcess(): ProcessHandler {
-                val commandLine = GeneralCommandLine("Squeak.exe", imageName, scriptName)
+                val commandLine = GeneralCommandLine(squeakPath, "-vm-display-null", imagePath, scriptPath)
                 val processHandler = ProcessHandlerFactory.getInstance().createColoredProcessHandler(commandLine)
                 ProcessTerminatedListener.attach(processHandler)
                 return processHandler

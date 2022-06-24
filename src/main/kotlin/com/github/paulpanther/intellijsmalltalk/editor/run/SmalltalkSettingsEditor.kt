@@ -8,17 +8,20 @@ import javax.swing.JPanel
 
 class SmalltalkSettingsEditor: SettingsEditor<SmalltalkRunConfiguration>() {
     private lateinit var myPanel: JPanel
-    private lateinit var myScriptName: LabeledComponent<TextFieldWithBrowseButton>
-    private lateinit var myImageName: LabeledComponent<TextFieldWithBrowseButton>
+    private lateinit var mySqueakPath: LabeledComponent<TextFieldWithBrowseButton>
+    private lateinit var myScriptPath: LabeledComponent<TextFieldWithBrowseButton>
+    private lateinit var myImagePath: LabeledComponent<TextFieldWithBrowseButton>
 
     override fun resetEditorFrom(s: SmalltalkRunConfiguration) {
-        myScriptName.component.text = s.scriptName ?: ""
-        myImageName.component.text = s.imageName ?: ""
+        mySqueakPath.component.text = s.squeakPath ?: ""
+        myScriptPath.component.text = s.scriptPath ?: ""
+        myImagePath.component.text = s.imagePath ?: ""
     }
 
     override fun applyEditorTo(s: SmalltalkRunConfiguration) {
-        s.scriptName = myScriptName.component?.text ?: ""
-        s.imageName = myImageName.component?.text ?: ""
+        s.scriptPath = myScriptPath.component?.text ?: ""
+        s.imagePath = myImagePath.component?.text ?: ""
+        s.squeakPath = mySqueakPath.component?.text ?: ""
     }
 
     override fun createEditor(): JComponent {
@@ -26,9 +29,11 @@ class SmalltalkSettingsEditor: SettingsEditor<SmalltalkRunConfiguration>() {
     }
 
     private fun createUIComponents() {
-        myScriptName = LabeledComponent()
-        myScriptName.component = TextFieldWithBrowseButton()
-        myImageName = LabeledComponent()
-        myImageName.component = TextFieldWithBrowseButton()
+        myScriptPath = LabeledComponent()
+        myScriptPath.component = TextFieldWithBrowseButton()
+        myImagePath = LabeledComponent()
+        myImagePath.component = TextFieldWithBrowseButton()
+        mySqueakPath = LabeledComponent()
+        mySqueakPath.component = TextFieldWithBrowseButton()
     }
 }
