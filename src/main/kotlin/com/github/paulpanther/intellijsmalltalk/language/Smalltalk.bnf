@@ -50,19 +50,22 @@ expression ::= assignment | primary
 return ::= RETURN_OPERATOR expression
 
 method ::= selector temporaries? statement_body {
-  methods=[getVariables]
+  methods=[getVariables getArguments]
 }
 
 private selector ::= unary_selector | keyword_selector
 
 unary_selector ::= IDENTIFIER
-keyword_selector ::= (KEYWORD IDENTIFIER)+
+keyword_selector ::= (KEYWORD argument)+
 
 temporaries ::= BLOCK_VARIABLE_SEPERATOR variable+ BLOCK_VARIABLE_SEPERATOR
 
-variable ::= IDENTIFIER {
-  mixin="com.github.paulpanther.intellijsmalltalk.language.SmalltalkNamedElementImpl"
-  implements="com.github.paulpanther.intellijsmalltalk.language.SmalltalkNamedElement"
+variable ::= named_identifier
+argument ::= named_identifier
+
+named_identifier ::= IDENTIFIER {
+  mixin="com.github.paulpanther.intellijsmalltalk.language.references.SmalltalkNamedElementImpl"
+  implements="com.github.paulpanther.intellijsmalltalk.language.references.SmalltalkNamedElement"
   methods=[getNameIdentifier getName setName]
 }
 
@@ -90,5 +93,5 @@ block_arguments ::= block_argument*
 block_argument ::= (IDENTIFIER BLOCK_VARIABLE_SEPERATOR)*
 
 identifier_usage ::= IDENTIFIER {
-  methods=[getReference]
+  methods=[getReferences]
 }
