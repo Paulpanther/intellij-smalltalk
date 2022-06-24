@@ -32,7 +32,7 @@ class SmalltalkSyntaxHighlighter: SyntaxHighlighterBase() {
             addKey(SmalltalkTypes.STATEMENT_SEPERATOR, SEMICOLON)
             addKey(SmalltalkTypes.KEYWORD, FUNCTION_DECLARATION)
             addKey(SmalltalkTypes.BINARY_OPERATOR, OPERATION_SIGN)
-            addKey(SmalltalkTypes.BLOCK_ARGUMENT, INSTANCE_FIELD)
+//            addKey(SmalltalkTypes.BLOCK_ARGUMENT, INSTANCE_FIELD)
         }
 
         private fun addKey(type: IElementType, other: TextAttributesKey) {

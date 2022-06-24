@@ -51,7 +51,6 @@ COMMENT=\"[^\"]*\"
   "false"                { return FALSE; }
   "self"                 { return SELF; }
   "super"                { return SUPER; }
-  "BLOCK_ARGUMENT"       { return BLOCK_ARGUMENT; }
 
   {LINE_TERMINATOR}      { return LINE_TERMINATOR; }
   {WHITE_SPACE}          { return WHITE_SPACE; }

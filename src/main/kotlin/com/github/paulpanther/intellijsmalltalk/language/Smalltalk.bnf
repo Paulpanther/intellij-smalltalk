@@ -11,6 +11,8 @@
   elementTypeClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkElementType"
   tokenTypeClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkTokenType"
 
+  psiImplUtilClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkPsiImplUtil"
+
   extends(".*statement")=statement
   tokens=[
     LINE_TERMINATOR='regexp:\r|\n|\r\n'
@@ -33,7 +35,7 @@
   ]
 }
 
-file ::= multi_statement
+file ::= method
 
 multi_statement ::= statement (STATEMENT_SEPERATOR statement)*
 
@@ -41,26 +43,34 @@ parenthesized_expression ::= PARENTHESIS_START expression PARENTHESIS_END
 
 statement ::= unary_message | binary_message | keyword_message | expression | return | COMMENT
 
-assignment ::= IDENTIFIER ASSIGNMENT_OPERATOR expression
+assignment ::= identifier_usage ASSIGNMENT_OPERATOR expression
 
 expression ::= assignment | primary
 
 return ::= RETURN_OPERATOR expression
 
-method ::= selector temporaries? multi_statement? STATEMENT_SEPERATOR?
+method ::= selector temporaries? statement_body {
+  methods=[getVariables]
+}
 
 private selector ::= unary_selector | keyword_selector
 
 unary_selector ::= IDENTIFIER
 keyword_selector ::= (KEYWORD IDENTIFIER)+
 
-temporaries ::= BLOCK_VARIABLE_SEPERATOR IDENTIFIER+ BLOCK_VARIABLE_SEPERATOR
+temporaries ::= BLOCK_VARIABLE_SEPERATOR variable+ BLOCK_VARIABLE_SEPERATOR
+
+variable ::= IDENTIFIER {
+  mixin="com.github.paulpanther.intellijsmalltalk.language.SmalltalkNamedElementImpl"
+  implements="com.github.paulpanther.intellijsmalltalk.language.SmalltalkNamedElement"
+  methods=[getNameIdentifier getName setName]
+}
 
 unary_message ::= expression IDENTIFIER
 binary_message ::= expression BINARY_OPERATOR expression
 keyword_message ::= expression (KEYWORD expression)+
 
-private primary ::= IDENTIFIER
+private primary ::= identifier_usage
     | parenthesized_expression
     | NUMBER
     | STRING
@@ -71,4 +81,14 @@ private primary ::= IDENTIFIER
     | self
     | super
 
-block ::= BLOCK_START (BLOCK_ARGUMENT BLOCK_VARIABLE_SEPERATOR)* multi_statement? STATEMENT_SEPERATOR? BLOCK_END
+statement_body ::= multi_statement? STATEMENT_SEPERATOR?
+
+block ::= BLOCK_START block_arguments statement_body BLOCK_END
+
+block_arguments ::= block_argument*
+
+block_argument ::= (IDENTIFIER BLOCK_VARIABLE_SEPERATOR)*
+
+identifier_usage ::= IDENTIFIER {
+  methods=[getReference]
+}

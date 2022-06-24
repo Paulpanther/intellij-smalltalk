@@ -20,6 +20,9 @@
             implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkSyntaxHighlighterFactory" />
         <configurationType
                 implementation="com.github.paulpanther.intellijsmalltalk.editor.run.SmalltalkRunConfigurationType" />
+        <lang.formatter
+            language="Smalltalk"
+            implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkFormattingModelBuilder" />
     </extensions>
 
     <applicationListeners>
