@@ -23,6 +23,10 @@
         <lang.formatter
             language="Smalltalk"
             implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkFormattingModelBuilder" />
+        <moduleBuilder
+            builderClass="com.github.paulpanther.intellijsmalltalk.editor.module.SmalltalkModuleBuilder" />
+        <sdkType
+                implementation="com.github.paulpanther.intellijsmalltalk.editor.module.SmalltalkImageSdk" />
     </extensions>
 
     <applicationListeners>
