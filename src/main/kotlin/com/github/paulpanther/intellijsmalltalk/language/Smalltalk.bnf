@@ -1,5 +1,6 @@
 {
   parserClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkParser"
+  parserUtilClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkParserUtil"
   extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
 
   psiClassPrefix="Smalltalk"
@@ -32,10 +33,11 @@
     BLOCK_VARIABLE_SEPERATOR='|'
     BLOCK_START='['
     BLOCK_END=']'
+    SYMBOL_START='#'
   ]
 }
 
-file ::= method
+file ::= <<isMethodFile>> method | <<isStatementFile>> multi_statement
 
 multi_statement ::= statement (STATEMENT_SEPERATOR statement)*
 
@@ -83,6 +85,9 @@ private primary ::= identifier_usage
     | false
     | self
     | super
+    | symbol
+
+symbol ::= SYMBOL_START named_identifier
 
 statement_body ::= multi_statement? STATEMENT_SEPERATOR?
 

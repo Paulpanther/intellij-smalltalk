@@ -8,10 +8,15 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <fileType
-                name="Smalltalk File"
-                implementationClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkFileType"
+                name="Smalltalk Code File"
+                implementationClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkStatementsFileType"
                 language="Smalltalk"
                 extensions="st"/>
+        <fileType
+                name="Smalltalk Method Declaration File"
+                implementationClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkMethodFileType"
+                language="Smalltalk"
+                extensions="stm"/>
         <lang.parserDefinition
             language="Smalltalk"
             implementationClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkParserDefinition" />
