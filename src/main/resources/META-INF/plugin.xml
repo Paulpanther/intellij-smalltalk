@@ -23,10 +23,27 @@
         <lang.formatter
             language="Smalltalk"
             implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkFormattingModelBuilder" />
+
         <moduleBuilder
             builderClass="com.github.paulpanther.intellijsmalltalk.editor.module.SmalltalkModuleBuilder" />
         <sdkType
                 implementation="com.github.paulpanther.intellijsmalltalk.editor.module.SmalltalkImageSdk" />
+
+        <applicationConfigurable
+            parentId="language"
+            instance="com.github.paulpanther.intellijsmalltalk.editor.settings.SmalltalkSettingsConfigurable"
+            displayName="Smalltalk" />
+        <applicationService
+                serviceImplementation="com.github.paulpanther.intellijsmalltalk.editor.settings.SmalltalkSettingsState" />
+        <annotator
+            implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkAnnotator"
+            language="Smalltalk" />
+        <lang.refactoringSupport
+            language="Smalltalk"
+            implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkRefactoringSupportProvider" />
+        <lang.psiStructureViewFactory
+            language="Smalltalk"
+            implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkStructureViewFactory" />
     </extensions>
 
     <applicationListeners>
