@@ -8,10 +8,15 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <fileType
-                name="Smalltalk File"
-                implementationClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkFileType"
+                name="Smalltalk Code File"
+                implementationClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkStatementsFileType"
                 language="Smalltalk"
                 extensions="st"/>
+        <fileType
+                name="Smalltalk Method Declaration File"
+                implementationClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkMethodFileType"
+                language="Smalltalk"
+                extensions="stm"/>
         <lang.parserDefinition
             language="Smalltalk"
             implementationClass="com.github.paulpanther.intellijsmalltalk.language.SmalltalkParserDefinition" />
@@ -23,10 +28,27 @@
         <lang.formatter
             language="Smalltalk"
             implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkFormattingModelBuilder" />
+
         <moduleBuilder
             builderClass="com.github.paulpanther.intellijsmalltalk.editor.module.SmalltalkModuleBuilder" />
         <sdkType
                 implementation="com.github.paulpanther.intellijsmalltalk.editor.module.SmalltalkImageSdk" />
+
+        <applicationConfigurable
+            parentId="language"
+            instance="com.github.paulpanther.intellijsmalltalk.editor.settings.SmalltalkSettingsConfigurable"
+            displayName="Smalltalk" />
+        <applicationService
+                serviceImplementation="com.github.paulpanther.intellijsmalltalk.editor.settings.SmalltalkSettingsState" />
+        <annotator
+            implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkAnnotator"
+            language="Smalltalk" />
+        <lang.refactoringSupport
+            language="Smalltalk"
+            implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkRefactoringSupportProvider" />
+        <lang.psiStructureViewFactory
+            language="Smalltalk"
+            implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkStructureViewFactory" />
     </extensions>
 
     <applicationListeners>

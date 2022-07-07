@@ -5,6 +5,7 @@ import com.github.paulpanther.intellijsmalltalk.language.psi.impl.SmalltalkNamed
 import com.github.paulpanther.intellijsmalltalk.language.psi.impl.SmalltalkVariableImpl
 import com.github.paulpanther.intellijsmalltalk.language.references.SmalltalkArgumentReference
 import com.github.paulpanther.intellijsmalltalk.language.references.SmalltalkVariableReference
+import com.intellij.lang.PsiBuilder
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiReferenceBase
 import com.intellij.psi.impl.source.tree.LeafPsiElement

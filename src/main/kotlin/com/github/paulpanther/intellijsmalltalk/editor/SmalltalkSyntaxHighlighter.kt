@@ -32,6 +32,7 @@ class SmalltalkSyntaxHighlighter: SyntaxHighlighterBase() {
             addKey(SmalltalkTypes.STATEMENT_SEPERATOR, SEMICOLON)
             addKey(SmalltalkTypes.KEYWORD, FUNCTION_DECLARATION)
             addKey(SmalltalkTypes.BINARY_OPERATOR, OPERATION_SIGN)
+            addKey(SmalltalkTypes.SYMBOL, CONSTANT)
 //            addKey(SmalltalkTypes.BLOCK_ARGUMENT, INSTANCE_FIELD)
         }
 

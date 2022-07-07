@@ -33,4 +33,10 @@ class SmalltalkImageSdk: SdkType("Smalltalk Image") {
         sdkModel: SdkModel,
         sdkModificator: SdkModificator
     ) = null
+
+    override fun setupSdkPaths(sdk: Sdk, sdkModel: SdkModel): Boolean {
+        sdk.sdkModificator.versionString = getVersionString(sdk)
+        sdk.sdkModificator.commitChanges()
+        return true
+    }
 }

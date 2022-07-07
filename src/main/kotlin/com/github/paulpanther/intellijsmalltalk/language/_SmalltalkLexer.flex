@@ -46,6 +46,7 @@ COMMENT=\"[^\"]*\"
   "|"                    { return BLOCK_VARIABLE_SEPERATOR; }
   "["                    { return BLOCK_START; }
   "]"                    { return BLOCK_END; }
+  "#"                    { return SYMBOL_START; }
   "nil"                  { return NIL; }
   "true"                 { return TRUE; }
   "false"                { return FALSE; }
