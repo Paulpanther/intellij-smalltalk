@@ -49,6 +49,9 @@
         <lang.psiStructureViewFactory
             language="Smalltalk"
             implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkStructureViewFactory" />
+        <lang.commenter
+            language="Smalltalk"
+            implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkCommenter" />
     </extensions>
 
     <applicationListeners>
