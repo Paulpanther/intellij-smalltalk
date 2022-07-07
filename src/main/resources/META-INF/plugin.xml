@@ -31,4 +31,9 @@
 
     <applicationListeners>
     </applicationListeners>
+    <actions>
+        <action id="com.github.paulpanther.intellijsmalltalk.connection.ConnectionStartAction"
+                class="com.github.paulpanther.intellijsmalltalk.connection.ConnectionStartAction"
+                text="Start Squeak Connection"/>
+    </actions>
 </idea-plugin>
