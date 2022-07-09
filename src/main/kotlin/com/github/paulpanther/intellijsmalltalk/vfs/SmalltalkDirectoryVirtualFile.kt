@@ -19,7 +19,7 @@ abstract class SmalltalkDirectoryVirtualFile(
         return myChildren.toTypedArray()
     }
 
-    val childrenList = myChildren
+    val childrenList by ::myChildren
 
     override fun getOutputStream(
         requestor: Any?,

@@ -31,8 +31,8 @@
 
         <moduleBuilder
             builderClass="com.github.paulpanther.intellijsmalltalk.editor.module.SmalltalkModuleBuilder" />
-        <sdkType
-                implementation="com.github.paulpanther.intellijsmalltalk.editor.module.SmalltalkImageSdk" />
+<!--        <sdkType-->
+<!--                implementation="com.github.paulpanther.intellijsmalltalk.editor.module.SmalltalkImageSdk" />-->
 
         <applicationConfigurable
             parentId="language"
@@ -52,6 +52,9 @@
         <lang.commenter
             language="Smalltalk"
             implementationClass="com.github.paulpanther.intellijsmalltalk.editor.SmalltalkCommenter" />
+
+        <projectStructureDetector
+                implementation="com.github.paulpanther.intellijsmalltalk.editor.module.SmalltalkProjectStructureDetector" />
     </extensions>
 
     <applicationListeners>

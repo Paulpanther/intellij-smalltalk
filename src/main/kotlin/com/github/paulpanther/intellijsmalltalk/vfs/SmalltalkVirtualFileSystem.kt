@@ -19,6 +19,20 @@ class SmalltalkVirtualFileSystem: VirtualFileSystem() {
 
     override fun refresh(asynchronous: Boolean) {
         val allFiles = SmalltalkVFSProtocol.getAllFiles()
+
+        root.childrenList.clear()
+        val categories = allFiles
+            .map { it.category }
+            .distinct()
+            .associateWith { SmalltalkCategoryVirtualFile(this, it, root)
+                .also { category -> root.childrenList += category } }
+        allFiles
+            .map {
+                val category = categories[it.category]!!
+                SmalltalkClassVirtualFile(this, it.name, category, it.length)
+                    .also { file -> category.childrenList += file }
+            }
+
     }
 
     override fun refreshAndFindFileByPath(path: String): VirtualFile? {

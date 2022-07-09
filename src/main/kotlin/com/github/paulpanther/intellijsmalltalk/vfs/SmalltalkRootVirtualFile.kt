@@ -5,7 +5,7 @@ import com.intellij.openapi.vfs.VirtualFile
 class SmalltalkRootVirtualFile(
     mySystem: SmalltalkVirtualFileSystem,
     myChildren: MutableList<SmalltalkVirtualFile> = mutableListOf()
-) : SmalltalkDirectoryVirtualFile(mySystem, "", null, myChildren) {
+) : SmalltalkDirectoryVirtualFile(mySystem, "/", null, myChildren) {
     override fun findAtPath(path: List<String>): VirtualFile? {
         val next = path[0]
         val child = myChildren.find { it.name == next }

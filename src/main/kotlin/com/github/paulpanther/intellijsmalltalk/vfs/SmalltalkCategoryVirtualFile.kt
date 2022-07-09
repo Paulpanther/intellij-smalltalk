@@ -6,7 +6,7 @@ class SmalltalkCategoryVirtualFile(
     mySystem: SmalltalkVirtualFileSystem,
     myName: String,
     myParent: SmalltalkRootVirtualFile?,
-    myChildren: MutableList<SmalltalkVirtualFile>
+    myChildren: MutableList<SmalltalkVirtualFile> = mutableListOf()
 ): SmalltalkDirectoryVirtualFile(mySystem, myName, myParent, myChildren) {
 
     override fun findAtPath(path: List<String>): VirtualFile? {

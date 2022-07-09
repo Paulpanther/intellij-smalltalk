@@ -9,7 +9,7 @@ import java.nio.charset.Charset
 class SmalltalkClassVirtualFile(
     mySystem: SmalltalkVirtualFileSystem,
     myName: String,
-    myCategory: SmalltalkCategoryVirtualFile,
+    myCategory: SmalltalkCategoryVirtualFile?,
     private val myLength: Long
 ): SmalltalkVirtualFile(mySystem, myName, myCategory) {
     private var content: String? = null

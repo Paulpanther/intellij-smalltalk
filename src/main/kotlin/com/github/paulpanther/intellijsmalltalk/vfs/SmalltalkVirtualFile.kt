@@ -11,7 +11,8 @@ abstract class SmalltalkVirtualFile(
     abstract fun findAtPath(path: List<String>): VirtualFile?
 
     override fun getPath(): String {
-        return "${myParent?.path ?: ""}/$myName"
+        val parentPath = myParent?.path?.let { "$it/" } ?: ""
+        return "$parentPath$myName"
     }
 
     override fun getName(): String {
